@@ -4,7 +4,7 @@ This repository contains analysis code for studying how local field potentials (
 
 **Overview**
 
-Goal: To investigate trial-to-trial variability in neural population activity and its relationship to visual perceptual choices.
+The algorithms included in this repository investigate trial-to-trial variability in neuronal population activity and its relationship to visual perceptual choices.
 
 **Methods:**
 
