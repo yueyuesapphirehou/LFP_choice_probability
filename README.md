@@ -17,3 +17,5 @@ Statistical testing (Wilcoxon rank-sum, Wilcoxon signed-rank)
 Visualization (heatmaps/contour maps, R scripts)
 
 **Datasets:** Electrophysiological recordings from macaque visual cortex during a motion discrimination task.
+
+The preprint using this repository is available here: https://www.biorxiv.org/content/10.1101/2025.07.29.667496v3
