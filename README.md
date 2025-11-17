@@ -20,7 +20,7 @@ Electrophysiological recordings from macaque visual cortices during a motion dis
    
 7. **individual monkey's reward history CP values** are formatted as "rewardhistory_MkyName.csv"
 
-# Methods & Scripts:
+# Code:
 
 1. LFP spectrogram and raw signal visualization (MATLAB)
 
