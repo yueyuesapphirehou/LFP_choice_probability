@@ -1,0 +1,5 @@
+monkey,condition,reward,inactivation,mean_cp,sem_cp
+YTU,pre_r,rewarded,pre,0.511023008913884,0.0010928703322264641
+YTU,pre_nr,nonrewarded,pre,0.5313050900211589,0.0022794984794422264
+YTU,post_r,rewarded,post,0.5148224915182444,0.0009648165701359268
+YTU,post_nr,nonrewarded,post,0.5344375338016548,0.001296746522905551

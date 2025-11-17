@@ -1,0 +1,5 @@
+monkey,condition,reward,inactivation,mean_cp,sem_cp
+CLU,pre_r,rewarded,pre,0.48597875433859467,0.0007065370434003677
+CLU,pre_nr,nonrewarded,pre,0.5159327099913273,0.001319219084986803
+CLU,post_r,rewarded,post,0.48374933813016646,0.0006473758430460728
+CLU,post_nr,nonrewarded,post,0.5318361131198347,0.0014055579044197186

@@ -1,0 +1,5 @@
+monkey,condition,reward,inactivation,mean_cp,sem_cp
+ARY,pre_r,rewarded,pre,0.47795104909862746,0.0015662588269285667
+ARY,pre_nr,nonrewarded,pre,0.4395825199331276,0.004726177724642791
+ARY,post_r,rewarded,post,0.47136407207414216,0.0024133099619000078
+ARY,post_nr,nonrewarded,post,0.520909375,0.003995930535533072
