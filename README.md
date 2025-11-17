@@ -2,7 +2,9 @@
 
 This repository contains analysis code and corresponding data for studying how local field potentials (LFPs) in primate visual cortex relate to perceptual decisions. The project quantifies choice probability (CP) from frequency-resolved LFP power and compares pre- and post-inactivation conditions to dissociate causal and non-causal contributions to decision-making.
 
-# Source Data: Electrophysiological recordings from macaque visual cortices during a motion discrimination task (the Middle Temporal (MT) area) and a shape matching task (area V4).
+# Source Data: 
+
+Electrophysiological recordings from macaque visual cortices during a motion discrimination task (the Middle Temporal (MT) area) and a shape matching task (area V4).
 
 1. **individual monkey CP values across frequency bands** are formatted as "FreqName_mkywise.csv"
 
@@ -10,11 +12,13 @@ This repository contains analysis code and corresponding data for studying how l
    
 3. **grand CP values across frequency bands** are formatted as "FreqName_grand.csv"
 
-4. **Epoch-wise CP values per each monkey and condition** are formatted as "anova_df_FreqBand.csv" for direct mixed-effects ANOVA
+4. **epoch-wise CP values per each monkey and condition** are formatted as "anova_df_FreqBand.csv" for direct mixed-effects ANOVA
    
-5. **Frequency-band-averaged CP traces for each monkey (pre vs post inactivation), their SEM curves, and the monkey-wise Wilcoxon results** are formatted as "cpstats_output_FreqName.pkl"
+5. **frequency-band-averaged CP traces for each monkey (pre vs post inactivation), their SEM curves, and the monkey-wise Wilcoxon results** are formatted as "cpstats_output_FreqName.pkl"
    
-6. **Raw CP samples (flattened time × frequency × sessions) pooled by cortical area (V4, MT)** are formatted as "cpstats_area_raw_FreqName.pkl"
+6. **raw CP samples (flattened time × frequency × sessions) pooled by cortical area (V4, MT)** are formatted as "cpstats_area_raw_FreqName.pkl"
+   
+7. **individual monkey's reward history CP values** are formatted as "rewardhistory_MkyName.csv"
 
 # Methods & Scripts:
 
@@ -38,7 +42,7 @@ This repository contains analysis code and corresponding data for studying how l
 
 **stats_wil.py** — Wilcoxon two-sided signed-rank (vs. 0.5) and rank-sum (Pre vs Post) tests
 
-**stats_anova.py** - Mixed ANOVA (epoch × inactivation condition) per frequency band
+**stats_anova.py** — Mixed ANOVA (epoch × inactivation condition) per frequency band
 
 4. Visualization for CP analyses (Python)
 
@@ -50,19 +54,21 @@ This repository contains analysis code and corresponding data for studying how l
 
 **plt_reward_history_alphabeta_barplot** — plot CP values based on prior trials' reward conditions (refer to Figure 4)
 
-6. Simulation (Python)
+5. Simulation (Python)
 
-**[TO CONTINUE]**
+**sim_neurodsp.py** — simulate LFP signals with pre-determined features for pipeline validation (refer to Supplementary Figure 4)
 
-7. Visualization for simulation (R)
+Three kinds of normalized data are included with conventional z-scoring, balanced z-scoring, and robust scaling.
+
+6. Visualization for simulation (R)
 
 **plt_cp_heatmap.R** — generate CP heatmaps with contour overlays
 
 **plt_cp_bands_epochs.R** — average CP across frequency bands and time epochs, plot with error bars
 
-8. Helper functions (MATLAB)
+7. Helper functions (MATLAB)
 
-**re-reference.m** — refer all the raw LFPs to the ones from the outmost channel
+**re-reference.m** — refer all the raw LFPs to the ones from the outermost channel
 
 # Reference:
 The preprint using this repository is available here: https://www.biorxiv.org/content/10.1101/2025.07.29.667496v3
