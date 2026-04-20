@@ -44,7 +44,7 @@ Electrophysiological recordings from macaque visual cortices during a motion dis
 
 **stats_anova.py** — Mixed ANOVA (epoch × inactivation condition) per frequency band
 
-4. Visualization for CP analyses (Python)
+4. Visualization for CP analyses (Python & MATLAB)
 
 **plt_mkywise_cp.py** — plot monkey-wise CP values at the defined frequency band (refer to Supplementary Figures 1-3)
 
@@ -52,7 +52,9 @@ Electrophysiological recordings from macaque visual cortices during a motion dis
 
 **plt_aggre_epoch_cp** — plot aggregated CP values across three behavioral epoch at the defined frequency band (refer to Figure 3's right panel)
 
-**plt_reward_history_alphabeta_barplot** — plot CP values based on prior trials' reward conditions (refer to Figure 4)
+**plt_reward_history_alphabeta_barplot** — plot CP values based on prior trials' reward conditions (refer to Figure 5)
+
+**plt_loading_energy.m** — plot pairwise loading energy values for the stimulus axis and the null dimension (refer to Figure 4)
 
 5. Simulation (Python)
 
@@ -70,6 +72,13 @@ Three kinds of normalized data are included with conventional z-scoring, balance
 
 **re-reference.m** — refer all the raw LFPs to the ones from the outermost channel
 
+8. Population signal analyses (MATLAB)
+
+**stimulus_decoder_within_condition.m** — classify stimuli by training a logistic decoder on LFP
+
+**stimulus_axis_residual_pca.m** — (refer to Figure 4) eigen-decompose LFP signals into low dimensions defined by stimulus and residual 
+
 # Reference:
 The preprint using this repository is available here: https://www.biorxiv.org/content/10.1101/2025.07.29.667496v3
+Note: this preprint doesn't include content related to item 8's code.
 
