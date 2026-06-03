@@ -1,4 +1,4 @@
-# LFP choice probability source data and analysis-pipeline / figure-generation code
+# LFP choice probability source data and code
 
 This repository contains source data and custom code for the manuscript:
 
