@@ -1,0 +1,3 @@
+figure_panel,condition,n,mean_firing_rate_hz,sem_firing_rate_hz,median_firing_rate_hz
+FigS8,pre_saline,12,8.447469940725796,1.5466505222056233,7.614526060724399
+FigS8,post_saline,12,8.36890396467744,1.127334356362541,6.567625988912245

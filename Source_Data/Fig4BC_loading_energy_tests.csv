@@ -1,0 +1,7 @@
+figure_panel,axis,condition,comparison,test,n,p_value
+Fig4B,stimulus_discrimination_axis,pre,high_gamma > low_gamma,"Wilcoxon signed-rank, one-sided",13,0.0001220703125
+Fig4C,leading_null_dimension,pre,low_gamma > high_gamma,"Wilcoxon signed-rank, one-sided",13,0.054931640625
+Fig4B,stimulus_discrimination_axis,post,high_gamma > low_gamma,"Wilcoxon signed-rank, one-sided",13,0.0001220703125
+Fig4C,leading_null_dimension,post,low_gamma > high_gamma,"Wilcoxon signed-rank, one-sided",13,0.0340576171875
+Fig4B,stimulus_discrimination_axis,pre_vs_post,(high_gamma-low_gamma) pre vs post,"Wilcoxon signed-rank, two-sided",13,0.039794921875
+Fig4C,leading_null_dimension,pre_vs_post,(low_gamma-high_gamma) pre vs post,"Wilcoxon signed-rank, two-sided",13,0.786865234375

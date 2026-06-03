@@ -1,0 +1,9 @@
+figure_panel,axis,frequency_band,condition,n,mean_loading_energy,sem_loading_energy
+Fig4B,stimulus_discrimination_axis,high_gamma,post,13,0.6735826271720319,0.020234998286785436
+Fig4B,stimulus_discrimination_axis,high_gamma,pre,13,0.6182279711961705,0.016487211682607486
+Fig4B,stimulus_discrimination_axis,low_gamma,post,13,0.22161077391195066,0.010745839740455815
+Fig4B,stimulus_discrimination_axis,low_gamma,pre,13,0.22675463392212672,0.014589158218867629
+Fig4C,leading_null_dimension,high_gamma,post,13,0.26550828226581874,0.051698556807157445
+Fig4C,leading_null_dimension,high_gamma,pre,13,0.29874119903519564,0.046277504313895206
+Fig4C,leading_null_dimension,low_gamma,post,13,0.48226190869721725,0.058973424894191495
+Fig4C,leading_null_dimension,low_gamma,pre,13,0.49284543384409285,0.05921291958044603

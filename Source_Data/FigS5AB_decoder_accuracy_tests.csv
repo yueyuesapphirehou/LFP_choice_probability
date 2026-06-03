@@ -1,0 +1,3 @@
+figure_panel,area,comparison,test,n,p_value
+FigS5A,MT,pre vs post high-gamma decoder accuracy,"Wilcoxon signed-rank, two-sided",7,0.15625
+FigS5B,V4,pre vs post high-gamma decoder accuracy,"Wilcoxon signed-rank, two-sided",6,1.0
