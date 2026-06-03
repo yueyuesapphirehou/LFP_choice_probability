@@ -1,84 +1,197 @@
-# Overview
+# LFP choice probability source data and analysis-pipeline / figure-generation code
 
-This repository contains analysis code and corresponding data for studying how local field potentials (LFPs) in primate visual cortex relate to perceptual decisions. The project quantifies choice probability (CP) from frequency-resolved LFP power and compares pre- and post-inactivation conditions to dissociate causal and non-causal contributions to decision-making.
+This repository contains source data and custom code for the manuscript:
 
-# Source Data: 
+**Absence of spiking activity reveals separable decision-related local field potential signals in visual cortex**
 
-Electrophysiological recordings from macaque visual cortices during a motion discrimination task (the Middle Temporal (MT) area) and a shape matching task (area V4).
+The most efficient workflow is to use the one-command runner in `Code/figure_generation/`, which regenerates all supported figure panels from the CSV files in `Source_Data/`.
 
-1. **individual monkey CP values across frequency bands** are formatted as "FreqName_mkywise.csv"
+## How to use this one-command runner
 
-2. **area-wise CP values across frequency bands** are formatted as "FreqName_AreaName.csv"
-   
-3. **grand CP values across frequency bands** are formatted as "FreqName_grand.csv"
+From the repository root:
 
-4. **epoch-wise CP values per each monkey and condition** are formatted as "anova_df_FreqBand.csv" for direct mixed-effects ANOVA
-   
-5. **frequency-band-averaged CP traces for each monkey (pre vs post inactivation), their SEM curves, and the monkey-wise Wilcoxon results** are formatted as "cpstats_output_FreqName.pkl"
-   
-6. **raw CP samples (flattened time × frequency × sessions) pooled by cortical area (V4, MT)** are formatted as "cpstats_area_raw_FreqName.pkl"
-   
-7. **individual monkey's reward history CP values** are formatted as "rewardhistory_MkyName.csv"
+```bash
+pip install -r requirements.txt
+cd Code/figure_generation
+python run_all_figures.py
+```
 
-# Code:
+This runs all figure-generation scripts and writes regenerated PDFs and PNGs to:
 
-1. LFP spectrogram and raw signal visualization (MATLAB)
+```text
+Output/generated_figures/
+```
 
-**lfp_plot_raw.m** — plot all trials of raw LFP in the time domain
+Useful options:
 
-**lfp_spectrogram.m** — compute and plot time–frequency spectrograms with Chronux
+```bash
+# Show all available figure-generation jobs
+python run_all_figures.py --list
 
-2. Choice probability (CP) calculation (MATLAB)
+# Run only selected figures
+python run_all_figures.py --only Fig3 Fig4
 
-**total_cp_LFP.m** — wrapper function to load channel data on each stimulus condition, and compute CP
+# Skip selected figures
+python run_all_figures.py --skip FigS8
+```
 
-**sp_psth_LFP.m** — compute LFP power spectra per trial and choice assignment
+Individual plotting scripts can also be run separately.
 
-**sp_cpz_LFP.m** — subsample, normalize, and calculate CP using ROC analysis
+## Repository structure
 
-**sp_psth_LFP_reward.m** — compute LFP power spectra per trial and choice assignment based on the preceeding trial's behavioral outcome
+```text
+LFP_choice_probability_Zenodo_release_v1/
+├── Source_Data/
+│   ├── Fig1G_behavioral_sensitivity_values.csv
+│   ├── Fig1G_behavioral_sensitivity_summary.csv
+│   ├── Fig1G_behavioral_sensitivity_tests.csv
+│   ├── highgamma_MT.csv
+│   ├── highgamma_V4.csv
+│   ├── highgamma_grand.csv
+│   ├── lowgamma_MT.csv
+│   ├── lowgamma_V4.csv
+│   ├── lowgamma_grand.csv
+│   ├── alphabeta_MT.csv
+│   ├── alphabeta_V4.csv
+│   ├── alphabeta_grand.csv
+│   ├── Fig3_main_epoch_summary_values.csv
+│   ├── FigS1S3_monkeywise_trace_source_values.csv
+│   ├── FigS1S3_epoch_summary_values.csv
+│   ├── Fig4BC_loading_energy_values.csv
+│   ├── Fig4BC_loading_energy_summary.csv
+│   ├── Fig4BC_loading_energy_tests.csv
+│   ├── Fig4DG_oldFig5ABCD_reward_history_values.csv
+│   ├── Fig4DG_oldFig5ABCD_reward_history_summary.csv
+│   ├── Fig4DG_oldFig5ABCD_reward_history_tests.csv
+│   ├── FigS5AB_decoder_accuracy_values.csv
+│   ├── FigS5AB_decoder_accuracy_summary.csv
+│   ├── FigS5AB_decoder_accuracy_tests.csv
+│   ├── FigS8_saline_control_values.csv
+│   ├── FigS8_saline_control_values_long.csv
+│   ├── FigS8_saline_control_summary.csv
+│   ├── FigS8_saline_control_tests.csv
+│   └── README.md
+├── Code/
+│   ├── figure_generation/
+│   │   ├── plotting_helpers.py
+│   │   ├── plot_fig1G_behavioral_sensitivity.py
+│   │   ├── plot_fig3_cp_timecourses.py
+│   │   ├── plot_fig4_frequency_specific_decomposition.py
+│   │   ├── plot_figS1S3_monkeywise_cp.py
+│   │   ├── plot_figS5AB_decoder_accuracy.py
+│   │   ├── plot_figS8_saline_control.py
+│   │   └── run_all_figures.py
+│   └── analysis_pipeline/
+│       ├── CP_computation/
+│       │   ├── compute_auc.m
+│       │   ├── sp_psth_LFP.m
+│       │   ├── sp_psth_LFP_reward.m
+│       │   ├── sp_cpz_LFP.m
+│       │   ├── total_cp_LFP.m
+│       │   └── README.md
+│       └── FigS4_simulation/
+│           ├── sim_neurodsp.py
+│           ├── choice1.csv
+│           ├── choice2.csv
+│           ├── choice1_scaled.csv
+│           ├── choice2_scaled.csv
+│           ├── choice1_zscored.csv
+│           ├── choice2_zscored.csv
+│           ├── choice1_zscore_conven.csv
+│           ├── choice2_zscore_conven.csv
+│           ├── plot_cp_heatmap.R
+│           ├── plot_cp_bands_epochs.R
+│           └── README.md
+├── Output/
+│   └── generated_figures/
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
 
-3. Statistical testing (Python)
+## Released animal labels
 
-**stats_wil.py** — Wilcoxon two-sided signed-rank (vs. 0.5) and rank-sum (Pre vs Post) tests
+The released source data use manuscript-consistent animal labels:
 
-**stats_anova.py** — Mixed ANOVA (epoch × inactivation condition) per frequency band
+| Released label | Cortical area |
+|---|---|
+| `Monkey_Y` | MT |
+| `Monkey_C` | MT |
+| `Monkey_L` | V4 |
+| `Monkey_A` | V4 |
 
-4. Visualization for CP analyses (Python & MATLAB)
+## Source-data files
 
-**plt_mkywise_cp.py** — plot monkey-wise CP values at the defined frequency band (refer to Supplementary Figures 1-3)
+The `Source_Data/` folder contains individual numerical values and summary tables used to reproduce plotted means and errors.
 
-**plt_area_cp.py** — plot area-wise CP values at the defined frequency band within the probe presentation (refer to Figure 3's left and middle panels)
+| File type | Meaning |
+|---|---|
+| `*_values.csv` | Underlying numerical values used for plotting and summary calculation |
+| `*_summary.csv` | Derived means and standard errors |
+| `*_tests.csv` | Statistical-test outputs associated with the relevant panels |
 
-**plt_aggre_epoch_cp** — plot aggregated CP values across three behavioral epoch at the defined frequency band (refer to Figure 3's right panel)
+| Manuscript panel | Source-data file(s) | What each row represents |
+|---|---|---|
+| Fig. 1G | `Fig1G_behavioral_sensitivity_values.csv` | One session and inactivation condition |
+| Fig. 3 area time courses | `highgamma_MT.csv`, `highgamma_V4.csv`, `lowgamma_MT.csv`, `lowgamma_V4.csv`, `alphabeta_MT.csv`, `alphabeta_V4.csv` | Time-resolved CP traces and SEMs for MT and V4 |
+| Fig. 3 aggregation column | `highgamma_grand.csv`, `lowgamma_grand.csv`, `alphabeta_grand.csv` | Mean ± SEM CP values for baseline, stimulus-response, and delay epochs |
+| Fig. S1-S3 | `FigS1S3_monkeywise_trace_source_values.csv` | Time-resolved monkey-wise mean ± SEM CP traces |
+| Fig. 4B-C | `Fig4BC_loading_energy_values.csv` | One session, condition, axis, and frequency band |
+| Fig. 4D-G | `Fig4DG_reward_history_values.csv` | One time-frequency CP estimate within the selected alpha-beta baseline window |
+| Fig. S5A-B | `FigS5AB_decoder_accuracy_values.csv` | One session and inactivation condition |
+| Fig. S8 | `FigS8_saline_control_values.csv` | One matched stimulus/image pair before and after saline |
 
-**plt_reward_history_alphabeta_barplot** — plot CP values based on prior trials' reward conditions (refer to Figure 5)
+## Analysis-pipeline code
 
-**plt_loading_energy.m** — plot pairwise loading energy values for the stimulus axis and the null dimension (refer to Figure 4)
+The folder `Code/analysis_pipeline/` documents upstream analyses (a.k.a the heart of this project). These scripts are included for methodological transparency and future collaboration.
 
-5. Simulation (Python)
+### CP computation
 
-**sim_neurodsp.py** — simulate LFP signals with pre-determined features for pipeline validation (refer to Supplementary Figure 4)
+```text
+Code/analysis_pipeline/CP_computation/
+```
 
-Three kinds of normalized data are included with conventional z-scoring, balanced z-scoring, and robust scaling.
+This folder contains MATLAB scripts documenting the upstream LFP-based choice-probability workflow.
 
-6. Visualization for simulation (R)
+| File | Purpose |
+|---|---|
+| `sp_psth_LFP.m` | Computes LFP spectrogram/power estimates used for CP analyses |
+| `sp_psth_LFP_reward.m` | Computes LFP spectrogram/power estimates for reward-history analyses |
+| `sp_cpz_LFP.m` | Computes LFP-based choice probability after normalization and trial balancing |
+| `total_cp_LFP.m` | Example wrapper for computing CP from LFP inputs |
+| `roc_curve_LFP.m` | Computes ROC curves |
 
-**plt_cp_heatmap.R** — generate CP heatmaps with contour overlays
+These scripts may require raw electrophysiological files that are not included in this source-data release. They also require MATLAB and, for spectral estimation, the Chronux toolbox.
 
-**plt_cp_bands_epochs.R** — average CP across frequency bands and time epochs, plot with error bars
+### Figure S4 simulation
 
-7. Helper functions (MATLAB)
+```text
+Code/analysis_pipeline/FigS4_simulation/
+```
 
-**re-reference.m** — refer all the raw LFPs to the ones from the outermost channel
+This folder contains the simulation and plotting files used to document the normalization-control logic for LFP power.
 
-8. Population signal analyses (MATLAB)
+| File | Purpose |
+|---|---|
+| `sim_neurodsp.py` | Simulates synthetic LFP-like signals using NeuroDSP |
+| `choice1.csv`, `choice2.csv` | Simulated raw signal examples |
+| `choice1_scaled.csv`, `choice2_scaled.csv` | Robust-scaled simulated signal outputs |
+| `choice1_zscored.csv`, `choice2_zscored.csv` | Z-scored simulated signal outputs |
+| `choice1_zscore_conven.csv`, `choice2_zscore_conven.csv` | Conventional z-scored simulated signal outputs |
+| `plot_cp_heatmap.R` | Plots simulated CP heatmaps |
+| `plot_cp_bands_epochs.R` | Plots simulated CP summaries across bands/epochs |
 
-**stimulus_decoder_within_condition.m** — classify stimuli by training a logistic decoder on LFP
+### Upstream analysis-pipeline scripts
 
-**stimulus_axis_residual_pca.m** — (refer to Figure 4) eigen-decompose LFP signals into low dimensions defined by stimulus and residual 
+The upstream scripts may require additional software:
 
-# Reference:
-The preprint using this repository is available here: https://www.biorxiv.org/content/10.1101/2025.07.29.667496v3
-Note: this preprint doesn't include content related to item 8's code.
+| Component | Requirement |
+|---|---|
+| CP computation | MATLAB |
+| LFP spectral estimation | Chronux toolbox |
+| Figure S4 simulation | Python with `neurodsp`|
+| Figure S4 plotting | R |
 
+## License
+
+Code is released under the MIT License. Source data are provided for reuse with citation of the manuscript and Zenodo archive.
