@@ -133,8 +133,6 @@ The `Source_Data/` folder contains individual numerical values and summary table
 | Fig. S5A-B | `FigS5AB_decoder_accuracy_values.csv` | One session and inactivation condition |
 | Fig. S8 | `FigS8_saline_control_values.csv` | One matched stimulus/image pair before and after saline |
 
-Note: Earlier intermediate Fig. 3 files named `highgamma_*`, `lowgamma_*`, and `alphabeta_*` are not part of the final source-data release. Their contents have been consolidated into `Fig3_main_timecourse_values.csv` and `Fig3_main_epoch_summary_values.csv` so that Fig. 3 has a single documented source-data path.
-
 ## Analysis-pipeline code
 
 The folder `Code/analysis_pipeline/` documents upstream analyses (a.k.a the heart of this project). These scripts are included for methodological transparency and future collaboration.
