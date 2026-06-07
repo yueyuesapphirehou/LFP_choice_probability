@@ -2,7 +2,7 @@
 
 This repository contains source data and custom code for the manuscript:
 
-**Absence of spiking activity reveals separable decision-related local field potential signals in visual cortex**
+**Distinct sources of decision-related signals in visual cortex are represented in different local field potential bands**
 
 The most efficient workflow is to use the one-command runner in `Code/figure_generation/`, which regenerates all supported figure panels from the CSV files in `Source_Data/`.
 
@@ -45,24 +45,16 @@ LFP_choice_probability_Zenodo_release_v1/
 │   ├── Fig1G_behavioral_sensitivity_values.csv
 │   ├── Fig1G_behavioral_sensitivity_summary.csv
 │   ├── Fig1G_behavioral_sensitivity_tests.csv
-│   ├── highgamma_MT.csv
-│   ├── highgamma_V4.csv
-│   ├── highgamma_grand.csv
-│   ├── lowgamma_MT.csv
-│   ├── lowgamma_V4.csv
-│   ├── lowgamma_grand.csv
-│   ├── alphabeta_MT.csv
-│   ├── alphabeta_V4.csv
-│   ├── alphabeta_grand.csv
+│   ├── Fig3_main_timecourse_values.csv
 │   ├── Fig3_main_epoch_summary_values.csv
 │   ├── FigS1S3_monkeywise_trace_source_values.csv
 │   ├── FigS1S3_epoch_summary_values.csv
 │   ├── Fig4BC_loading_energy_values.csv
 │   ├── Fig4BC_loading_energy_summary.csv
 │   ├── Fig4BC_loading_energy_tests.csv
-│   ├── Fig4DG_oldFig5ABCD_reward_history_values.csv
-│   ├── Fig4DG_oldFig5ABCD_reward_history_summary.csv
-│   ├── Fig4DG_oldFig5ABCD_reward_history_tests.csv
+│   ├── Fig4DG_reward_history_values.csv
+│   ├── Fig4DG_reward_history_summary.csv
+│   ├── Fig4DG_reward_history_tests.csv
 │   ├── FigS5AB_decoder_accuracy_values.csv
 │   ├── FigS5AB_decoder_accuracy_summary.csv
 │   ├── FigS5AB_decoder_accuracy_tests.csv
@@ -133,13 +125,15 @@ The `Source_Data/` folder contains individual numerical values and summary table
 | Manuscript panel | Source-data file(s) | What each row represents |
 |---|---|---|
 | Fig. 1G | `Fig1G_behavioral_sensitivity_values.csv` | One session and inactivation condition |
-| Fig. 3 area time courses | `highgamma_MT.csv`, `highgamma_V4.csv`, `lowgamma_MT.csv`, `lowgamma_V4.csv`, `alphabeta_MT.csv`, `alphabeta_V4.csv` | Time-resolved CP traces and SEMs for MT and V4 |
-| Fig. 3 aggregation column | `highgamma_grand.csv`, `lowgamma_grand.csv`, `alphabeta_grand.csv` | Mean ± SEM CP values for baseline, stimulus-response, and delay epochs |
+| Fig. 3 area time courses | `Fig3_main_timecourse_values.csv` | Time-resolved CP traces and SEMs for MT and V4; one row per frequency band, area, time point, and inactivation condition |
+| Fig. 3 aggregation column and reported epoch summaries | `Fig3_main_epoch_summary_values.csv` | Mean ± SEM CP values for baseline, stimulus-response, and delay epochs; rows with `aggregation_level = All` reproduce the Fig. 3 aggregation panels |
 | Fig. S1-S3 | `FigS1S3_monkeywise_trace_source_values.csv` | Time-resolved monkey-wise mean ± SEM CP traces |
 | Fig. 4B-C | `Fig4BC_loading_energy_values.csv` | One session, condition, axis, and frequency band |
 | Fig. 4D-G | `Fig4DG_reward_history_values.csv` | One time-frequency CP estimate within the selected alpha-beta baseline window |
 | Fig. S5A-B | `FigS5AB_decoder_accuracy_values.csv` | One session and inactivation condition |
 | Fig. S8 | `FigS8_saline_control_values.csv` | One matched stimulus/image pair before and after saline |
+
+Note: Earlier intermediate Fig. 3 files named `highgamma_*`, `lowgamma_*`, and `alphabeta_*` are not part of the final source-data release. Their contents have been consolidated into `Fig3_main_timecourse_values.csv` and `Fig3_main_epoch_summary_values.csv` so that Fig. 3 has a single documented source-data path.
 
 ## Analysis-pipeline code
 
