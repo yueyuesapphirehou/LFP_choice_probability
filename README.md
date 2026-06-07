@@ -75,7 +75,7 @@ LFP_choice_probability_Zenodo_release_v1/
 │   │   └── run_all_figures.py
 │   └── analysis_pipeline/
 │       ├── CP_computation/
-│       │   ├── compute_auc.m
+│       │   ├── roc_curve_LFP.m
 │       │   ├── sp_psth_LFP.m
 │       │   ├── sp_psth_LFP_reward.m
 │       │   ├── sp_cpz_LFP.m
