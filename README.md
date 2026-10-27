@@ -1,8 +1,11 @@
+
 # LFP choice probability source data and code
 
-This repository contains source data and custom code for the manuscript:
+This repository contains source data and custom code for the published paper:
 
-**Distinct sources of decision-related signals in visual cortex are represented in different local field potential bands**
+**[Distinct sources of decision-related signals in visual cortex are represented in different local field potential bands](https://doi.org/10.1371/journal.pbio.3003873)**
+
+*PLOS Biology* (2026)
 
 The most efficient workflow is to use the one-command runner in `Code/figure_generation/`, which regenerates all supported figure panels from the CSV files in `Source_Data/`.
 
